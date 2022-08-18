@@ -1,3 +1,13 @@
+#Racket files
+.DS_Store
+compiled/
+/doc/
+*~
+*.bak
+\#*
+.\#*
+
+#Elixir files
 /_build
 /cover
 /deps
