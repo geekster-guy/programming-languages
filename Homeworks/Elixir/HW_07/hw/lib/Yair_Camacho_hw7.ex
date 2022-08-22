@@ -24,13 +24,13 @@ defmodule Hw.CSVFiles do
     :ok
   """
   def main(inputFile, outputFile) do
-    # Reading the file
+    # Read the file
     data = read_contents(inputFile)
-    # Trasforming the data
+    # Transform the data
     list = process_data(data)
-    # Adding the header to the new file
+    # Add the header to the new file
     processedData = [["Index","Name","Email","Graduation","Grade"] | list]
-    # Creating the new file
+    # Create the new file
     store_csv(processedData,outputFile)
   end
 
@@ -42,14 +42,14 @@ defmodule Hw.CSVFiles do
     |> Enum.map(&(String.split(&1, ",")))
   end
 
-  # Converting the data
+  # Convert the data
   defp process_data(data) do
     data
     |> tl()
     |> Enum.map(&convertRow(&1))
   end
 
-  # Formating the rows
+  # Format the original rows
   defp convertRow(row) do
     [index, fullName, id, graduationStr, gradeStr] = row
     name = formatName(fullName)
@@ -65,15 +65,15 @@ defmodule Hw.CSVFiles do
     "#{Enum.at(temp, 0)} #{Enum.at(temp, 1)}"
   end
 
-  # Changing the date format
+  # Change the date format
   defp formatDate(date) do
     temp = String.split(date, "/")
     "#{Enum.at(temp, 1)}/#{Enum.at(temp, 0)}/#{Enum.at(temp, 2)}"
   end
 
-  # Transforming the grades format
+  # Transform the grades format
   defp getGrade(number) do
-    # Mapping grades numbers to letters
+    # Map grades numbers to letters
     cond do
       number >= 93 -> "A"
       number >= 90 -> "A-"
@@ -89,11 +89,15 @@ defmodule Hw.CSVFiles do
     end
   end
 
-  # Function that creates the new cvs file
+  # Function that creates the new csv file
   defp store_csv(data, filename) do
+    # Format the output data
     cvs = data
-      |> Enum.map(&Enum.join(&1, ","))
-      |> Enum.join("\n")
-    File.write(filename,cvs)
+    |> Enum.map(&Enum.join(&1, ","))
+    |> Enum.join("\n")
+    # Write the data into the a new file
+    filename
+    |> Path.expand(__DIR__)
+    |> File.write(cvs)
   end
 end

@@ -1,8 +1,10 @@
-defmodule HwTest do
+defmodule Hw.CSVTest do
   use ExUnit.Case
-  doctest Hw
+  alias Hw.CSVFiles
+  # doctest Hw.CSVFiles
 
-  test "greets the world" do
-    assert Hw.hello() == :world
+  test "convert csv file" do
+    assert CSVFiles.main("../data/students_mex.csv", "../data/students_out.csv") ==
+      :ok
   end
 end
