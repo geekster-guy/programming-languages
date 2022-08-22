@@ -72,5 +72,5 @@
 (run-tests test-triangle-type)
 (displayln "Testing: point-quadrant")
 (run-tests test-point-quadrant)
-; (displayln "Testing: parking-ticket")
-; (run-tests test-parking-ticket)
+(displayln "Testing: parking-ticket")
+(run-tests test-parking-ticket)
