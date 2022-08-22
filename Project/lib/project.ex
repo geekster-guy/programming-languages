@@ -20,7 +20,7 @@ defmodule Project do
     - out_filename: String with the name of the file with the computed data
 
   ## Examples
-    iex> Project.main("Sales-data-CompuStore.csv", "Total_per_region.csv")
+    iex> Project.main("../data/Sales-data-CompuStore.csv", "../data/Total_per_region.csv")
     :ok
 
   """
